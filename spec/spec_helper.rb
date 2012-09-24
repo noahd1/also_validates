@@ -1,8 +1,8 @@
 require "rubygems"
 require "bundler/setup"
-require "validation_aggregator"
 require "shoulda-matchers"
 
+require "also_validates"
 require "fixtures/object_fixtures"
 
 RSpec.configure do |config|

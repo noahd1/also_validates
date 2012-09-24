@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/validation_aggregator/version', __FILE__)
+require File.expand_path('../lib/also_validates/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Noah Davis"]
@@ -11,8 +11,8 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "validation_aggregator"
+  gem.name          = "also_validates"
   gem.require_paths = ["lib"]
   gem.add_dependency(%q<activemodel>, [">= 3.0.0"])
-  gem.version       = ValidationAggregator::VERSION
+  gem.version       = AlsoValidates::VERSION
 end

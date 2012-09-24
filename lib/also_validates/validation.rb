@@ -1,4 +1,4 @@
-module ValidationAggregator
+module AlsoValidates
 
   class Validation < ActiveModel::Validator
     def initialize(args)

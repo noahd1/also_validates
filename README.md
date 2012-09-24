@@ -1,4 +1,4 @@
-# ValidationAggregator
+# AlsoValidates
 
 An ActiveModel validator that validates associated models, adding any errors on those models back onto the "primary" model.
 
