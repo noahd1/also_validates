@@ -1,6 +1,6 @@
 # ValidationAggregator
 
-TODO: Write a gem description
+An ActiveModel validator that validates associated models, adding any errors on those models back onto the "primary" model.
 
 ## Installation
 
@@ -18,7 +18,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    class Beer
+      include ActiveModel::Validations
+
+      validate_presence_of :hops
+    end
+
+    class Belly
+      include ActiveModel::Validations
+
+      validate_presence_of :button
+    end
+
+    class MonsterTruckRally
+      include ActiveModel::Validations
+
+      attr_accessor :beer, :belly
+
+      validate_presence_of :truck_count
+      also_validate :beer, :belly
+
+      def initialize(beer, belly)
+        @beer  = beer
+        @belly  = belly
+      end
+    end
 
 ## Contributing
 

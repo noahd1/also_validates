@@ -1,5 +1,8 @@
+require "active_model"
 require "validation_aggregator/version"
+require "validation_aggregator/validation"
+require "validation_aggregator/helper"
 
-module ValidationAggregator
-  # Your code goes here...
+ActiveModel::Validations::HelperMethods.module_eval do
+  include ValidationAggregator::Helper
 end
