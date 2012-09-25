@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["noahd1@yahoo.com"]
   gem.description   = %q{An ActiveModel validator that validates associated models, copying any errors from composed models up to their parent.}
   gem.summary       = %q{An ActiveModel validator that validates associated models, copying any errors from composed models up to their parent.}
-  gem.homepage      = ""
+  gem.homepage      = "http://www.github.com/noahd/also_validates"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
