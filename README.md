@@ -1,12 +1,12 @@
 # AlsoValidates
 
-An ActiveModel validator that validates associated models, adding any errors on those models back onto the "primary" model.
+An ActiveModel validator that validates associated models, copying any errors from composed models up to their parent.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'validation_aggregator'
+    gem 'also_validates'
 
 And then execute:
 
@@ -14,35 +14,58 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install validation_aggregator
+    $ gem install also_validates
 
 ## Usage
 
+Given existing models with their own validations:
+
     class Beer
       include ActiveModel::Validations
+      attr_accessor :hops
+      validates_presence_of :hops
 
-      validate_presence_of :hops
+      def initialize(attrs = {})
+        @hops = attrs[:hops]
+      end
     end
 
     class Belly
       include ActiveModel::Validations
+      attr_accessor :button
+      validates_presence_of :button
 
-      validate_presence_of :button
+      def initialize(attrs = {})
+        @button = attrs[:button]
+      end
     end
+
+And you need a model that composes those models:
 
     class MonsterTruckRally
       include ActiveModel::Validations
 
-      attr_accessor :beer, :belly
+      attr_accessor :beer, :belly, :truck_count
 
-      validate_presence_of :truck_count
-      also_validate :beer, :belly
+      validates_presence_of :truck_count
+      also_validates :beer, :belly
 
-      def initialize(beer, belly)
-        @beer  = beer
-        @belly  = belly
+      def initialize(attrs = {})
+        @beer = attrs[:beer]
+        @belly = attrs[:belly]
+        @truck_count = attrs[:truck_count]
       end
     end
+
+Calling `valid?` on an instance of monster truck rally, will run validations on both the monster truck rally as well as any models specified by `also_validates`. If there are any validation errors on the composed model, they are copied up (to the "base") of the parent model (in this case a MonsterTruckRally).
+
+Note: Currently does not pass the attribute information (the field of the composed model) along to its parent. Errors are added to "base".
+
+Only supported option currently is `allow_nil: true`:
+
+    also_validates :beer, :belly, allow_nil: true
+
+Which, as the option states, allows nil values and will not attempt to validate those models.
 
 ## Contributing
 

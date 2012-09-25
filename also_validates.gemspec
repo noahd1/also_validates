@@ -4,8 +4,8 @@ require File.expand_path('../lib/also_validates/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Noah Davis"]
   gem.email         = ["noahd1@yahoo.com"]
-  gem.description   = %q{Validate associated models, and aggregate their errors onto the primary model}
-  gem.summary       = %q{Aggregate errors onto primary model from associated models}
+  gem.description   = %q{An ActiveModel validator that validates associated models, copying any errors from composed models up to their parent.}
+  gem.summary       = %q{An ActiveModel validator that validates associated models, copying any errors from composed models up to their parent.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
