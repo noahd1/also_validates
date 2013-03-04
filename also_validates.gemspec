@@ -15,4 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.add_dependency(%q<activemodel>, [">= 3.0.0"])
   gem.version       = AlsoValidates::VERSION
+  gem.license       = "MIT"
 end
