@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/noahd1/also_validates.png)](https://codeclimate.com/github/noahd1/also_validates)
+
 # AlsoValidates
 
 An ActiveModel validator that validates associated models, copying any errors from composed models up to their parent.
